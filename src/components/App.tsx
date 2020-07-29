@@ -1,35 +1,42 @@
 import React from 'react';
 import './App.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import MediaCard from '../components/Card';
-import Card from '../components/Card'
-import { Box } from '@material-ui/core';
 
-const useStyles = makeStyles({
-  
-})
+import Card from '../components/Card'
+
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './Header';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
+import history from '../history';
+import Main from './Main';
+import { Link } from 'react-router-dom';
+import CardInfo from './CardInfo';
 
 const App: React.FC = () => {
-  const classes = useStyles();
+  class Hello extends React.Component {
+    render() { return (<div><Link to="/goodbye">GoodBye</Link></div>)}
+  }
+
+  class GoodBye extends React.Component {
+    render() { return (<div><Link to="/hello">Hello</Link></div>)}
+  }
+
   return (
-    <div>
-      <Box justifyContent="center">
-        <h2>Choose your Pokémon</h2>
-      </Box>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card />
-        </Grid>
-      </Grid>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <Router history={history}>  
+        <Header title="Choose Your Pokemon" />
+        <Switch>
+          <Route
+            path ="/"
+            exact component={Main}
+          />
+          <Route 
+            path="/pokemon/:name/:img"
+            exact component={CardInfo}
+          />
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
