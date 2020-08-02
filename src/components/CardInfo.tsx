@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { Container, Grid, Button, makeStyles, Paper } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import Card from './Card';
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   navigate: {
     marginTop: 15,
   }
-});
+}); 
 function CardInfo() {
   const classes = useStyles();
   let { name, img } = useParams();
