@@ -7,16 +7,21 @@ import { RootStateOrAny, connect } from 'react-redux';
 import { fetchPokemons } from '../actions/';
 import { IPokemon } from '../models/IPokemon';
 
+//#region Props
 interface Props {
-  pokemons: [ IPokemon ];
+  pokemons: any;
   fetchPokemons: () => void;
 }
+//#endregion
+
+//#region State
 const mapState = (state: RootStateOrAny) => {
-  return { pokemons: state.pokemons}
+  return { pokemons: Object.values(state.pokemons)}
 }
-
 const connector = connect(mapState, { fetchPokemons });
+//#endregion
 
+//#region Component
 class Main extends Component<Props> {
   componentDidMount() {
     this.props.fetchPokemons();
@@ -26,13 +31,14 @@ class Main extends Component<Props> {
     return this.props.pokemons.map((pokemon: IPokemon) => {
       return (
         <Grid item xs={12} sm={6} md={4} key={pokemon.id}>
-          <Card name={`${pokemon.name}`} img={`${pokemon.img}`} />
+          <Card pokemon={pokemon}/>
         </Grid>
       );
     });
   }
 
   render() {
+    
     return (
       <Container maxWidth="lg">
         <Grid container spacing={2}>
@@ -44,3 +50,4 @@ class Main extends Component<Props> {
 };
 
 export default connector(Main)
+//#endregion

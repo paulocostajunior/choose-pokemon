@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Header';
 import { Router, Switch, Route } from 'react-router-dom';
@@ -8,8 +7,8 @@ import history from '../history';
 import Main from './Main';
 import CardInfo from './CardInfo';
 
+//#region Component
 const App: React.FC = () => {
-
   return (
     <React.Fragment>
       <CssBaseline />
@@ -21,7 +20,7 @@ const App: React.FC = () => {
             exact component={Main}
           />
           <Route 
-            path="/pokemon/:name/:img"
+            path="/pokemon/:id"
             exact component={CardInfo}
           />
         </Switch>
@@ -29,5 +28,5 @@ const App: React.FC = () => {
     </React.Fragment>
   );
 }
-
 export default App;
+//#endregion

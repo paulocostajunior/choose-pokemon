@@ -6,10 +6,19 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Divider } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { IPokemon } from '../models/IPokemon';
 
+//#region Types
+interface MatchParams {
+  id: string;
+}
+interface Props extends RouteComponentProps<MatchParams>{
+  pokemon: IPokemon
+}
+//#endregion
 
+//#region Style
 const useStyles = makeStyles({
   root: {
     minWidth: 200,
@@ -31,15 +40,11 @@ const useStyles = makeStyles({
     marginTop: 10
   }
 });
+//#endregion
 
-export default function SimpleCard(props: any) {
+//#region Component
+export default function SimpleCard(props: Props) {
   const classes = useStyles();
-  let link;
-
-  let { name, img } = useParams();
-  if (!name && !img) {
-    link = <Link style={{margin: "auto"}} to={`/pokemon/${props.name}/${props.img}`}>Select</Link>
-  }
 
   return (
     <React.Fragment>
@@ -47,18 +52,21 @@ export default function SimpleCard(props: any) {
         <CardContent>
             <CardMedia
               className={classes.media}
-              image={require(`../assets/${props.img}.png`)}
-              title={props.name}
+              image={require(`../assets/${props.pokemon.img}.png`)}
+              title={props.pokemon.name}
             />
           <Divider className={classes.divider} />
           <Typography className={classes.cardTitle}>
-            {props.name}
+            {props.pokemon.name}
           </Typography>
         </CardContent>
+
         <CardActions>
-          {link}
+          <Link style={{margin: "auto"}} to={`/pokemon/${props.pokemon.id}`}>Select</Link>
         </CardActions>
+        
       </Card>
     </React.Fragment>
   );
 }
+//#endregion

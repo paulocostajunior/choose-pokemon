@@ -7,3 +7,9 @@ export const fetchPokemons = () => async (dispatch: ThunkDispatch<{}, {}, AnyAct
    
    dispatch({type: 'FETCH_POKEMONS', payload: response.data })
 }
+
+export const fetchPokemon = ((id: number) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+   const response = await apiPokemon.get(`/pokemon/${id}`);
+
+   dispatch({type: 'FETCH_POKEMON', payload: response.data});
+})

@@ -5,6 +5,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 
+//#region Type
+Header.propTypes = {
+  sections: PropTypes.array,
+  title: PropTypes.string,
+};
+//#endregion
+
+//#region Style
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -23,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
 }));
+//#endregion
 
+//#region Component
 export default function Header(props: any) {
   const classes = useStyles();
   const { title } = props;
@@ -66,8 +76,5 @@ export default function Header(props: any) {
     </React.Fragment>
   );
 }
+//#endregion
 
-Header.propTypes = {
-  sections: PropTypes.array,
-  title: PropTypes.string,
-};
