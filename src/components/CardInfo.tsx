@@ -11,6 +11,7 @@ import CardDescription from './CardDescription';
 interface MatchParams {
   id: string;
 }
+
 interface Props extends RouteComponentProps<MatchParams>{
   pokemon: IPokemon;
   fetchPokemon: (id: number) => void;
@@ -22,6 +23,7 @@ const mapState = (state:RootStateOrAny, ownProps: RootStateOrAny) => {
   
   return { pokemon: state.pokemons[ownProps.match.params.id] } 
 }
+
 const connector = connect(mapState, { fetchPokemon });
 //#endregion
 

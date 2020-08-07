@@ -6,14 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Divider } from '@material-ui/core';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IPokemon } from '../models/IPokemon';
 
-//#region Types
-interface MatchParams {
-  id: string;
-}
-interface Props extends RouteComponentProps<MatchParams>{
+interface Props {
   pokemon: IPokemon
 }
 //#endregion

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { makeStyles, Card, CardContent, Typography, Divider } from '@material-ui/core';
 
 //#region Props
@@ -11,7 +11,7 @@ interface Props {
 const useStyles = makeStyles({
     root: {
       minWidth: 200,
-      minHeight: 266
+      minHeight: 293
     },
     title: {
       fontSize: 14,
