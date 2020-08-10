@@ -11,7 +11,7 @@ interface Props {
 const useStyles = makeStyles({
     root: {
       minWidth: 200,
-      minHeight: 293
+      minHeight: 265
     },
     title: {
       fontSize: 14,
@@ -41,7 +41,7 @@ export default function CardDescription(props: Props) {
           <CardContent>
             <Divider className={classes.divider} />
             <Typography className={classes.cardTitle}>
-                {props.description}
+                Description: {props.description}
             </Typography>
           </CardContent>
       </Card>

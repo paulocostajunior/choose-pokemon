@@ -31,7 +31,7 @@ class Main extends Component<Props> {
     return this.props.pokemons.map((pokemon: IPokemon) => {
       return (
         <Grid item xs={12} sm={6} md={4} key={pokemon.id}>
-          <Card pokemon={pokemon}/>
+          <Card pokemon={pokemon} showLink={true}/>
         </Grid>
       );
     });

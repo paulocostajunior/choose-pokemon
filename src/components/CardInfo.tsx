@@ -19,8 +19,7 @@ interface Props extends RouteComponentProps<MatchParams>{
 //#endregion
 
 //#region State
-const mapState = (state:RootStateOrAny, ownProps: RootStateOrAny) => {
-  
+const mapState = (state:RootStateOrAny, ownProps: RootStateOrAny) => { 
   return { pokemon: state.pokemons[ownProps.match.params.id] } 
 }
 
@@ -41,7 +40,7 @@ class CardInfo extends Component<Props> {
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={4}>
-            <Card pokemon={this.props.pokemon}/>
+            <Card pokemon={this.props.pokemon} showLink={false}/>
           </Grid>
           <Grid item xs={12} sm={6} md={8}>
             <CardDescription description={this.props.pokemon.description} />

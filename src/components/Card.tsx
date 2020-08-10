@@ -5,12 +5,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Divider } from '@material-ui/core';
+import { Divider, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { IPokemon } from '../models/IPokemon';
 
 interface Props {
-  pokemon: IPokemon
+  pokemon: IPokemon;
+  showLink: boolean;
 }
 //#endregion
 
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
 //#region Component
 export default function SimpleCard(props: Props) {
   const classes = useStyles();
+  let link;
 
   return (
     <React.Fragment>
@@ -56,11 +58,16 @@ export default function SimpleCard(props: Props) {
             {props.pokemon.name}
           </Typography>
         </CardContent>
-
-        <CardActions>
-          <Link style={{margin: "auto"}} to={`/pokemon/${props.pokemon.id}`}>Select</Link>
-        </CardActions>
-        
+        {
+        props.showLink 
+          ? 
+          <CardActions>
+            <Button href={`/pokemon/${props.pokemon.id}`} style={{margin: "auto"}} variant="outlined" color="primary">
+              Select
+            </Button>
+          </CardActions>
+          : null
+        }
       </Card>
     </React.Fragment>
   );
